@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = DynamicAccessors::VERSION
   gem.authors       = ["Szymon Czarnecki"]
   gem.email         = ["spirit_sc@thinkdifferent.pl"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Simple way to define accessors with type}
+  gem.summary       = %q{Simple way to define accessors with type}
+  gem.homepage      = "https://github.com/spiritsc/dynamic_accessors"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
