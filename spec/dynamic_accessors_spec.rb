@@ -23,21 +23,21 @@ describe 'DynamicAccessors' do
       subject.name = 1
       subject.name.should == "1"
       subject.name = nil
-      subject.name.should == ""
+      subject.name.should be_nil
     end
     
     it "should set integer value" do
       subject.age = 18
       subject.age.should == 18
       subject.age = nil
-      subject.age.should == 0
+      subject.age.should be_nil
     end
     
     it "should set string value with float type" do
       subject.weight = 75
       subject.weight.should == 75.0
       subject.weight = nil
-      subject.weight.should == 0.0
+      subject.weight.should be_nil
     end
     
     it "should set date value" do
@@ -94,7 +94,7 @@ describe 'DynamicAccessors' do
       subject.homepage = "http://google.com"
       subject.homepage == "http://google.com"
       subject.homepage = nil
-      subject.homepage.should == ""
+      subject.homepage.should be_nil
     end
   end
 end

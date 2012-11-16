@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Conventers::StringConventer" do
   subject { Conventers::StringConventer.new }
   
-  it { subject.convert.should == "" }
+  it { subject.convert.should be_nil }
   
   it { subject.convert(1).should == "1" }
   

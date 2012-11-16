@@ -3,7 +3,7 @@ module Conventers
     
   private
     def execute(value=nil)
-      value.to_s
+      value.to_s unless value.nil?
     end
   end
 end

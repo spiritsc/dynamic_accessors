@@ -10,7 +10,7 @@ module Conventers
         value.to_f
       when :integer
         value.to_i
-      end
+      end unless value.nil?
     end
   end
 end
