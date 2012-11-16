@@ -24,6 +24,8 @@ describe 'DynamicAccessors' do
       subject.name.should == "1"
       subject.name = nil
       subject.name.should be_nil
+      subject.name = ""
+      subject.name.should be_nil
     end
     
     it "should set integer value" do
@@ -94,6 +96,8 @@ describe 'DynamicAccessors' do
       subject.homepage = "http://google.com"
       subject.homepage == "http://google.com"
       subject.homepage = nil
+      subject.homepage.should be_nil
+      subject.homepage = ""
       subject.homepage.should be_nil
     end
   end
