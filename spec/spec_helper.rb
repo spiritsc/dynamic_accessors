@@ -24,4 +24,6 @@ class Foo
   boolean :admin
   enum    :sex, values: ["male", "female"]
   field   :homepage, as: :string
+  array   :post_ids
+  array   :comment_ids, process: :integer
 end

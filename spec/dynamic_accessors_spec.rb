@@ -92,13 +92,24 @@ describe 'DynamicAccessors' do
       subject.sex.should be_nil
     end
     
-    it "should set boolean value" do
+    it "should set string value" do
       subject.homepage = "http://google.com"
       subject.homepage == "http://google.com"
       subject.homepage = nil
       subject.homepage.should be_nil
       subject.homepage = ""
       subject.homepage.should be_nil
+    end
+    
+    it "should set array value" do
+      subject.post_ids = "1, 2, 3"
+      subject.post_ids == ["1", "2", "3"]
+      subject.post_ids = nil
+      subject.post_ids.should == []
+      subject.post_ids = ""
+      subject.post_ids.should == []
+      subject.comment_ids = "4, 5"
+      subject.comment_ids.should == [4, 5]
     end
   end
 end

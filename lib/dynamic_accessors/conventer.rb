@@ -1,3 +1,4 @@
+require 'dynamic_accessors/conventers'
 require 'dynamic_accessors/conventers/base_conventer'
 require 'dynamic_accessors/conventers/string_conventer'
 require 'dynamic_accessors/conventers/integer_conventer'
@@ -5,9 +6,10 @@ require 'dynamic_accessors/conventers/date_conventer'
 require 'dynamic_accessors/conventers/time_conventer'
 require 'dynamic_accessors/conventers/boolean_conventer'
 require 'dynamic_accessors/conventers/enum_conventer'
+require 'dynamic_accessors/conventers/array_conventer'
 
 module Conventer
-  [:string, :integer, :date, :time, :boolean, :enum].each do |m|
+  [:string, :integer, :date, :time, :boolean, :enum, :array].each do |m|
     define_method m do |*args|
       define_dynamic_accessor(m, *args)
     end
@@ -39,21 +41,24 @@ private
   end
 
   def define_dynamic_accessor_class(type)
-    case type
-    when :string
-      Conventers::StringConventer
-    when :integer
-      Conventers::IntegerConventer
-    when :date
-      Conventers::DateConventer
-    when :time
-      Conventers::TimeConventer
-    when :boolean
-      Conventers::BooleanConventer
-    when :enum
-      Conventers::EnumConventer
-    else
-      raise "Uknown type of accessor!"
-    end
+    Conventers.define_dynamic_accessor_class(type)
+    # case type
+    # when :string
+    #   Conventers::StringConventer
+    # when :integer
+    #   Conventers::IntegerConventer
+    # when :date
+    #   Conventers::DateConventer
+    # when :time
+    #   Conventers::TimeConventer
+    # when :boolean
+    #   Conventers::BooleanConventer
+    # when :enum
+    #   Conventers::EnumConventer
+    # when :array
+    #   Conventers::ArrayConventer
+    # else
+    #   raise "Uknown type of accessor!"
+    # end
   end
 end
