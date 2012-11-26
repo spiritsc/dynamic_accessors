@@ -2,6 +2,10 @@ module Conventers
   class IntegerConventer < Conventers::BaseConventer
     
   private
+    def value_present?(value)
+      super && value.to_s != ""
+    end
+  
     def execute(value=nil)
       options[:type] ||= :integer
 
@@ -10,7 +14,7 @@ module Conventers
         value.to_i
       when :float
         value.to_f
-      end unless value.nil? || value == ""
+      end
     end
   end
 end

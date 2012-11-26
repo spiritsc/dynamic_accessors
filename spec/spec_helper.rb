@@ -1,8 +1,10 @@
 require 'bundler/setup'
 require 'rspec/autorun'
 require 'dynamic_accessors'
+require 'simplecov'
 
 Bundler.setup(:test)
+SimpleCov.start
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -26,4 +28,16 @@ class Foo
   field   :homepage, as: :string
   array   :post_ids
   array   :comment_ids, process: :integer
+  custom  :bar, process: Proc.new { |f| Bar.new(bar_login: f.login) }
+  custom  :baz, process: Proc.new { |f| Bar.new(f) }, default_value: Proc.new { Bar.new(bar_login: "Baz") }
+end
+
+class Bar
+  include DynamicAccessors
+  
+  string :bar_login
+  
+  def initialize(attributes={})
+    @bar_login = attributes[:bar_login]
+  end
 end

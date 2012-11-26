@@ -1,5 +1,8 @@
 module Conventers
   class ArrayConventer < Conventers::BaseConventer
+    def convert(value=nil)
+      execute(value || default_value || [])
+    end
     
   private
     def execute(value=nil)

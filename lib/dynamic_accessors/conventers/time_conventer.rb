@@ -16,8 +16,6 @@ module Conventers
         value
       when value.is_a?(Date)
         Time.parse(value.to_s)
-      else
-        raise "Invalid time value"
       end
       utc? ? _value.utc : _value
     rescue

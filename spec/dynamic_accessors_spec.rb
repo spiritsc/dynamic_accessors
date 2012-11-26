@@ -51,10 +51,8 @@ describe 'DynamicAccessors' do
       subject.born_at.should == Date.today
       subject.born_at = Time.now
       subject.born_at.should == Date.today
-    end
-    
-    it "should raise error when set date with nil value" do
-      lambda { subject.born_at = nil }.should raise_error
+      subject.born_at = nil
+      subject.born_at.should be_nil
     end
     
     it "should set time value" do
@@ -63,10 +61,8 @@ describe 'DynamicAccessors' do
       subject.created_at.should == Time.parse("2012-11-10 00:00:00")
       subject.created_at = _time
       subject.created_at.should == _time
-    end
-    
-    it "should raise error when set date with nil value" do
-      lambda { subject.created_at = nil }.should raise_error
+      subject.created_at = nil
+      subject.created_at.should be_nil
     end
     
     it "should set time value with UTC" do
@@ -112,6 +108,23 @@ describe 'DynamicAccessors' do
       subject.post_ids.should == []
       subject.comment_ids = "4, 5"
       subject.comment_ids.should == [4, 5]
+    end
+    
+    it "should set custom value" do
+      subject.bar = nil
+      subject.bar.should be_nil
+      subject.bar = subject
+      subject.bar.bar_login.should == "Bar"
+    end
+    
+    it "should set custom value with default" do
+      subject.baz = nil
+      subject.baz.should_not be_nil
+      subject.baz.bar_login.should == "Baz"
+      subject.baz = {}
+      subject.baz.bar_login.should be_nil
+      subject.baz = { bar_login: "Bazzzzz" }
+      subject.baz.bar_login.should == "Bazzzzz"
     end
   end
 end

@@ -15,6 +15,8 @@ module Conventers
       Conventers::EnumConventer
     when :array
       Conventers::ArrayConventer
+    when :custom
+      Conventers::CustomConventer
     else
       raise "Uknown type of accessor!"
     end

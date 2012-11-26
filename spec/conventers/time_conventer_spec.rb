@@ -4,10 +4,7 @@ describe "Conventers::TimeConventer" do
   let(:time) { Time.parse("2012-01-01 12:12:12") }
   subject { Conventers::TimeConventer.new }
   
-  it "should raise error when given nil value" do
-    lambda { subject.convert }.should raise_error("Invalid time value")
-  end
-  
+  it { subject.convert.should be_nil }
   it { subject.convert((time - 1).to_s).should == (time - 1) }
   it { subject.convert((time - 1).to_s).should == (time - 1) }
   

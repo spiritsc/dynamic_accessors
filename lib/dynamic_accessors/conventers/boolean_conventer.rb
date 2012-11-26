@@ -14,8 +14,13 @@ module Conventers
       'YES'   => true,
       'NO'    => false,
       'ON'    => true,
-      'OFF'   => false
+      'OFF'   => false,
+      nil     => false
     }
+    
+    def convert(value=nil)
+      execute(value || default_value)
+    end
 
   private
     def execute(value=nil)

@@ -3,10 +3,7 @@ require 'spec_helper'
 describe "Conventers::DateConventer" do
   subject { Conventers::DateConventer.new }
   
-  it "should raise error when given nil value" do
-    lambda { subject.convert }.should raise_error("Invalid date value")
-  end
-  
+  it { subject.convert.should be_nil }
   it { subject.convert(Date.today - 1).should == (Date.today - 1) }
   it { subject.convert((Date.today - 1).to_s).should == (Date.today - 1) }
   
