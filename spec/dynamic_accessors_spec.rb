@@ -33,6 +33,8 @@ describe 'DynamicAccessors' do
       subject.age.should == 18
       subject.age = nil
       subject.age.should be_nil
+      subject.age = ""
+      subject.age.should be_nil
     end
     
     it "should set string value with float type" do

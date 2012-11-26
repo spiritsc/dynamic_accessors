@@ -6,11 +6,11 @@ module Conventers
       options[:type] ||= :integer
 
       case options[:type]
-      when :float
-        value.to_f
       when :integer
         value.to_i
-      end unless value.nil?
+      when :float
+        value.to_f
+      end unless value.nil? || value == ""
     end
   end
 end
