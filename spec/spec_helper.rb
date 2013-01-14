@@ -24,6 +24,8 @@ class Foo
   time    :created_at
   time    :updated_at, utc: true
   boolean :admin
+  boolean :active, default_value: true
+  boolean :locked, default_value: false
   enum    :sex, values: ["male", "female"]
   field   :homepage, as: :string
   array   :post_ids

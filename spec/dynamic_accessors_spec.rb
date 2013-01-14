@@ -75,10 +75,34 @@ describe 'DynamicAccessors' do
     it "should set boolean value" do
       subject.admin = true
       subject.admin.should be_true
+      subject.admin = false
+      subject.admin.should be_false
       subject.admin = "Foo"
       subject.admin.should be_false
       subject.admin = nil
       subject.admin.should be_false
+    end
+    
+    it "should set boolean value with defalt true value" do
+      subject.active = nil
+      subject.active.should be_true # default value
+      subject.active = "Foo"
+      subject.active.should be_false
+      subject.active = false
+      subject.active.should be_false
+      subject.active = true
+      subject.active.should be_true
+    end
+    
+    it "should set boolean value with defalt false value" do
+      subject.locked = nil
+      subject.locked.should be_false # default value
+      subject.locked = "Foo"
+      subject.locked.should be_false
+      subject.locked = false
+      subject.locked.should be_false
+      subject.locked = true
+      subject.locked.should be_true
     end
     
     it "should set enum value" do

@@ -19,7 +19,7 @@ module Conventers
     }
     
     def convert(value=nil)
-      execute(value || default_value)
+      execute(value_present?(value) ? value : default_value)
     end
 
   private
